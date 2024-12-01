@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project(project_name VERSION 1.0.0 LANGUAGES CXX)
+project(Advent_of_Code VERSION 1.0.0 LANGUAGES CXX)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
@@ -17,6 +17,7 @@ add_subdirectory(submodules/googletest)
 # Add executable
 add_executable(${PROJECT_NAME}
     src/main.cpp
+    src/Day1.cpp
 )
 
 target_include_directories(${PROJECT_NAME}

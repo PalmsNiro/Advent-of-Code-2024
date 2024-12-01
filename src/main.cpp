@@ -1,6 +1,9 @@
 #include <iostream>
+#include "Day1.hpp"
 
-int main() {
-    std::cout << "Hello World!";
-    return 0;
+int main()
+{
+    Day1 d1;
+    d1.solve();
+    return EXIT_SUCCESS;
 }

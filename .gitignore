@@ -1,1 +1,4 @@
 .vscode
+/submodules
+/build
+input.txt
