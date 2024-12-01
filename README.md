@@ -1,13 +1,7 @@
-# Cpp-Project-template
+# Solutions for advent of Code 2024
 
-This is a template for all sort of C++ Projects.  
-
-For future use you might want to add a few extra things:  
-Folders:  
-- build - All intermediate files
-- include - Project *public* header files
-- bin - Output executables
-
+Here will be all solutions for the advent of code 2024 riddles, using c++.
+ 
 ## General Inforamtion
 
 After setting up a new repository with this template do the following:
