@@ -1,9 +1,10 @@
 #include <iostream>
-#include "Day1.hpp"
+#include "Day2.hpp"
 
 int main()
 {
-    Day1 d1;
-    d1.solve();
+    std::cout << "Test: "<<('1' < '2' ? false : true) << std::endl;
+    Day2 d;
+    d.solve();
     return EXIT_SUCCESS;
 }
