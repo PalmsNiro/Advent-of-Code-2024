@@ -25,6 +25,19 @@ void Day3::readFileToString(const string filepath)
     file1.close();
 }
 
+int multiply(smatch match)
+{
+    string mul = match[0];
+    mul.replace(0, 4, "");
+    mul.replace(mul.end() - 1, mul.end(), "");
+    replace(mul.begin(), mul.end(), ',', ' ');
+    // cout << mul << endl;
+    int ln = atoi(mul.substr(0, mul.find(' ')).c_str());
+    int rn = atoi(mul.substr(mul.find(' '), mul.length()).c_str());
+    cout << ln << " : " << rn << endl;
+    return ln * rn;
+}
+
 int Day3::part1()
 {
     int result = 0;
@@ -34,16 +47,7 @@ int Day3::part1()
 
     while (regex_search(text, match, pattern))
     {
-        cout << "Found: " << match[0] << std::endl;
-        string mul = match[0];
-        mul.replace(0, 4, "");
-        mul.replace(mul.end() - 1, mul.end(), "");
-        replace(mul.begin(), mul.end(), ',', ' ');
-        // cout << mul << endl;
-        int ln = atoi(mul.substr(0, mul.find(' ')).c_str());
-        int rn = atoi(mul.substr(mul.find(' '), mul.length()).c_str());
-        cout << ln << " : " << rn << endl;
-        result += ln * rn;
+        result += multiply(match);
         text = match.suffix();
     }
 
@@ -53,18 +57,50 @@ int Day3::part1()
 int Day3::part2()
 {
     int result = 0;
+    bool notFinished = true;
     bool enabled = true;
 
     regex mulPattern("mul\\((\\d*)\\,(\\d*)\\)");
     regex doPattern("do\\(\\)");
     regex dontPattern("don't\\(\\)");
-    std::smatch match;
 
-    while (regex_search(text, match, dontPattern))
+    int iteration = 1;
+    string remaining = text;
+    while (!remaining.empty())
     {
-        cout << "Found: " << match[0] << std::endl;
+        smatch matchMul, matchDo, matchDont;
 
-        text = match.suffix();
+        bool hasMul = regex_search(remaining, matchMul, mulPattern);
+        bool hasDo = regex_search(remaining, matchDo, doPattern);
+        bool hasDont = regex_search(remaining, matchDont, dontPattern);
+
+        if (!hasMul && !hasDo && !hasDont)
+            break;
+
+        // Finde den nächstgelegenen Match
+        size_t mulPos = hasMul ? matchMul.position() : string::npos;
+        size_t doPos = hasDo ? matchDo.position() : string::npos;
+        size_t dontPos = hasDont ? matchDont.position() : string::npos;
+
+        // Handle den nächsten Match
+        if (hasMul && (!hasDo || mulPos < doPos) && (!hasDont || mulPos < dontPos))
+        {
+            if (enabled)
+            {
+                result += multiply(matchMul);
+            }
+            remaining = remaining.substr(mulPos + matchMul.length());
+        }
+        else if (hasDo && (!hasDont || doPos < dontPos))
+        {
+            enabled = true;
+            remaining = remaining.substr(doPos + matchDo.length());
+        }
+        else if (hasDont)
+        {
+            enabled = false;
+            remaining = remaining.substr(dontPos + matchDont.length());
+        }
     }
 
     return result;
