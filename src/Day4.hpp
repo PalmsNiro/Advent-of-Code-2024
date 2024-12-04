@@ -7,17 +7,18 @@
 #include <string>
 #include <unordered_map>
 
-class Day3
+class Day4
 {
 
 public:
-    Day3();
+    Day4();
     void solve();
 
 private:
-    std::string text;
+    std::vector<std::string> textVec;
 
     void readFileToString(const std::string filepath);
+    int checkDirections(int indexLine, int indexChar);
     int part1();
     int part2();
 

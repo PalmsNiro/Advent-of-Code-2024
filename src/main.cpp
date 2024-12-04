@@ -1,9 +1,9 @@
 #include <iostream>
-#include "Day3.hpp"
+#include "Day4.hpp"
 
 int main()
 {
-    Day3 d;
+    Day4 d;
     d.solve();
     return EXIT_SUCCESS;
 }

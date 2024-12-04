@@ -74,7 +74,7 @@ void Day3::solve()
 {
     readFileToString("../input.txt");
     // cout << text << endl;
-    cout << "Day 2 Solutions" << endl;
+    cout << "Day 3 Solutions" << endl;
     // cout << "Part1: " << endl
     //      << part1() << endl;
     cout << "Part2: " << endl
