@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
 
 class Day5
 {
@@ -15,7 +16,7 @@ public:
     void solve();
 
 private:
-    std::vector<std::pair<int, int>> orderingRules;
+    std::vector<std::pair<int, int>> pageOrderingRules;
     std::vector<std::vector<int>> pageNumbers;
 
     void readFileToVectors(const std::string filepath);
