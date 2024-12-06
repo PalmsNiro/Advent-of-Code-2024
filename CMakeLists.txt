@@ -22,6 +22,7 @@ add_executable(${PROJECT_NAME}
     src/Day3.cpp
     src/Day4.cpp
     src/Day5.cpp
+    src/Day6.cpp
 )
 
 target_include_directories(${PROJECT_NAME}
