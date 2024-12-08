@@ -54,15 +54,10 @@ bool Day6::frontIsClear(pair<int, int> pos, CardinalDir facingDir)
 
 bool Day6::posInBounds(pair<int, int> pos)
 {
-    // cout << "Checking bounds for pos " << pos.first << "," << pos.second << endl;
-    // cout << "Map size: " << map.size() << "x" << map[0].length() << endl;
-
     bool inBounds = pos.second >= 0 &&
                     pos.second < map.size() &&
                     pos.first >= 0 &&
                     pos.first < map[0].length();
-
-    // cout << "Position is " << (inBounds ? "in" : "out of") << " bounds" << endl;
     return inBounds;
 }
 
@@ -77,13 +72,13 @@ int Day6::part1()
     {
         size_t x = s.find('^');
         if (x != string::npos)
-        { // Korrekter Vergleich
+        { 
             pos = {(int)x, y};
-            break; // Optional: Wenn wir den Startpunkt gefunden haben, können wir die Schleife verlassen
+            break; 
         }
         y++;
     }
-    // cout << "starting pos: " << pos.first << " : " << pos.second << endl;
+
 
     CardinalDir facingDir = N;
     while (posInBounds(pos))
@@ -91,7 +86,6 @@ int Day6::part1()
 
         while (frontIsClear(pos, facingDir) && posInBounds(pos))
         {
-            // cout << "front clear" << endl;
             if (map.at(pos.second).at(pos.first) != 'X')
             {
                 map.at(pos.second)[pos.first] = 'X';
@@ -102,18 +96,17 @@ int Day6::part1()
             {
             case N:
                 pos.second--;
-                break; // break hinzugefügt
+                break; 
             case E:
                 pos.first++;
-                break; // break hinzugefügt
+                break; 
             case S:
                 pos.second++;
-                break; // break hinzugefügt
+                break; 
             case W:
                 pos.first--;
-                break; // break hinzugefügt
+                break; 
             };
-            // cout << "Pos: " << pos.first << " : " << pos.second << endl;
         }
 
         // turn 90 degrees
@@ -132,7 +125,6 @@ int Day6::part1()
             facingDir = N;
             break;
         };
-        // cout << "Pos: " << pos.first << " : " << pos.second << endl;
     }
 
     return result;
