@@ -8,6 +8,14 @@
 #include <string>
 #include <sstream>
 
+enum CardinalDir
+{
+    N,
+    E,
+    S,
+    W
+};
+
 class Day6
 {
 
@@ -16,12 +24,13 @@ public:
     void solve();
 
 private:
-
     std::vector<std::string> map;
 
     void readFileToMapVec(const std::string filepath);
     int part1();
     int part2();
+    bool frontIsClear(std::pair<int, int> pos, CardinalDir facingDir);
+    bool posInBounds(std::pair<int, int> pos);
 };
 
 template <typename T>
