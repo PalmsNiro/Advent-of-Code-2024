@@ -2,6 +2,12 @@
 
 Here will be all solutions for the advent of code 2024 riddles, using c++.
 
+After setting up a new repository with this template initialize the google test submodule again
+
+```
+git submodule update --init --recursive
+```
+
 ## build process and use
 1. first we create a build folder:  
 ```
